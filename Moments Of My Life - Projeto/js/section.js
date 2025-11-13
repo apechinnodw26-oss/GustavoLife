@@ -19,15 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
             images: [
                 '../imgs/praia.jpeg', 
-                '../imgs/preteen-2.jpeg',
-                '../imgs/preteen-3.jpeg'
+           
             ]
         },
         today: {
             images: [
                 '../imgs/ana.jpeg', 
-                '../imgs/today-2.jpeg',
-                '../imgs/today-3.jpeg'
+            
             ]
         }
     };
