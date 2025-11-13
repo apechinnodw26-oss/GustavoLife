@@ -1,0 +1,311 @@
+/* Estilos Glo    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('../imgs/Birthday.jpeg');
+    background-size: cover;
+    background-position: center;s */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    /* SUA FOTO DE FUNDO GLOBAL ESCURECIDA COM GRADIENTE FORTE NO BODY */
+      width: 100%;
+    height: 100vh;
+    /* *** INFORMAÇÕES DA SUA FOTO ***  
+       Certifique-se de que a imagem "minha-foto.jpg"
+       está na pasta correta (ex: /img/minha-foto.jpg).
+    */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('../imgs/Birthday.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Para posicionar o overlay */
+    text-align: center;
+}
+
+
+/* ============================================== */
+/* 1. ESTILOS DA SEÇÃO HERO (Introdução) */
+/* ============================================== */
+
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2); 
+}
+
+/* Conteúdo (textos e botão) */
+.content {
+    padding: 20px;
+    max-width: 90%;
+    color: white; 
+    position: relative; 
+    z-index: 2; 
+}
+
+/* Títulos */
+.title {
+    font-size: 4.5em; 
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); 
+}
+
+.subtitle {
+    font-size: 1.8em;
+    font-weight: 400;
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Botão */
+#explore-button { 
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#explore-button:hover {
+    background-color: #0056b3; 
+    transform: translateY(-2px); 
+}
+
+/* ============================================== */
+/* 2. ESTILOS DA SEÇÃO GALERIA */
+/* ============================================== */
+
+.gallery-section {
+    padding: 60px 20px;
+    /* Fundo branco semi-transparente para melhor legibilidade do texto */
+    background-color: rgba(255, 255, 255, 0); 
+    text-align: center;
+    position: relative;
+}
+
+.gallery-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+/* Container da Galeria: LAYOUT 2x2 */
+.gallery-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas com largura igual */
+    gap: 50px; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Item da Galeria */
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    position: relative; /* Essencial para o overlay funcionar */
+    cursor: pointer; /* Indica que é clicável */
+}
+
+/* Imagem */
+.gallery-item img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* EFEITO VISUAL: Título no meio com Gradiente e Hover */
+.caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    
+    /* Gradiente Leve */
+
+    
+    /* Transição para o efeito de sumir */
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Estiliza apenas o título (h3) */
+.caption h3 {
+    margin: 0;
+    font-size: 1.8em;
+    padding: 5px 15px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    border-bottom: none;
+}
+
+/* Esconde as descrições (<p>) */
+.caption p {
+    display: none; 
+}
+
+/* EFEITO HOVER: O gradiente e o título somem (opacity: 0) */
+.gallery-item:hover .caption {
+    opacity: 0;
+}
+
+
+.lightbox {
+    /* Mantenha o que você tinha, mas garanta que o display seja 'none' */
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    /* REMOVA justify-content: center; align-items: center; daqui. O JS fará isso. */
+    /* Deixe-o simples assim, ou mude para este bloco mais limpo: */
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    margin: auto;
+    display: block;
+    animation: zoom 0.6s ease-in-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close-btn:hover {
+    color: #bbb;
+}
+/* Seu CSS existente ... */
+
+/* Adicione estes estilos no final do seu arquivo section.css */
+
+/* Estilos para o Modal de Álbum */
+#album-modal .album-content {
+    background-color: #222; /* Fundo escuro para o conteúdo do modal */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    animation: zoom 0.6s ease-in-out;
+    display: flex; /* Para centralizar o título e o grid de imagens */
+    flex-direction: column;
+    align-items: center;
+}
+
+#album-modal #album-title {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    color: #007bff; /* Ou a cor que preferir */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Container para as imagens dentro do álbum */
+.album-images-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Grid responsivo */
+    gap: 20px;
+    width: 100%; /* Ocupa a largura total do album-content */
+}
+
+.album-images-container img {
+    width: 100%;
+    height: 150px; /* Altura fixa para as miniaturas no álbum */
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer; /* Indica que as imagens individuais no álbum são clicáveis */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.album-images-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7); /* Efeito de brilho ao passar o mouse */
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    #album-modal .album-content {
+        padding: 20px;
+    }
+    #album-modal #album-title {
+        font-size: 1.8em;
+    }
+    .album-images-container {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+    
+    .gallery-container {
+        grid-template-columns: 1fr; /* Em telas menores, volta para 1 coluna */
+    }
+}

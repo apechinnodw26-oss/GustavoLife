@@ -1,0 +1,111 @@
+/* Importação da fonte (se não estiver no HTML) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Reset básico e corpo da página */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: white; /* Cor do texto principal */
+    overflow: hidden; /* Evita barras de rolagem desnecessárias */
+    height: 100vh;
+}
+
+/* Seção principal com a imagem de fundo */
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    /* *** INFORMAÇÕES DA SUA FOTO ***
+       Certifique-se de que a imagem "minha-foto.jpg"
+       está na pasta correta (ex: /img/minha-foto.jpg).
+    */
+    background-image: url('../imgs/Birthday.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Para posicionar o overlay */
+    text-align: center;
+}
+
+/* Camada de Gradiente Preto e Transparente */
+/* O linear-gradient sobrepõe a imagem e faz a transição de um preto mais escuro (rgba(0,0,0,0.8)) para o totalmente transparente (rgba(0,0,0,0)) ou vice-versa, dependendo da direção. */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradiente: de preto mais opaco (em baixo) para totalmente transparente (em cima) */
+    background-image: linear-gradient(to top, 
+                                      rgba(0, 0, 0, 0.8) 0%, 
+                                      rgba(0, 0, 0, 0.2) 60%, 
+                                      transparent 100%);
+    z-index: 1; /* Garante que o gradiente fique sobre a foto, mas sob o conteúdo */
+}
+
+/* Conteúdo (textos e botão) */
+.content {
+    position: relative;
+    z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
+    padding: 20px;
+    max-width: 90%;
+}
+
+/* Estilo do H1 - "Moments Of My Life" */
+.title {
+    font-size: 4.5em; /* Tamanho grande */
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para destacar no fundo */
+}
+
+/* Estilo do P - "Gustavo Gomes" */
+.subtitle {
+    font-size: 1.8em;
+    font-weight: 400;
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo do Botão "Enter" */
+#enter-button {
+    display: flex;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    width: 130px;
+    align-items: center;
+justify-content: center;
+text-align: center;
+    font-weight: 700;
+    margin-left: 280px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 80px;
+    border-radius: 7px;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+}
+
+#enter-button:hover {
+    background-color: white;
+    color: #1a1a1a; /* Cor escura ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de elevação sutil */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Opcional: Responsividade para telas menores */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+}
